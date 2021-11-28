@@ -72,6 +72,7 @@ module.exports = function (app) {
 
     .post(async (req, res) => {
       //response will contain new book object including atleast _id and title
+      if (!req.body.title) return res.status(400).json('missing required field title')
       let title = req.body.title;
       let doc = await createBook({
         title: title,
@@ -103,7 +104,8 @@ module.exports = function (app) {
       let doc = await getBook({
         _id: bookid,
       }, (err, doc) => {
-        if (err) return console.log(err)
+        // console.log(doc)
+        if (err || doc.length === 0) return res.status(400).json('no book exists')
         res.json({
           _id: doc[0]._id,
           title: doc[0].title,
