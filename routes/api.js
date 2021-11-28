@@ -57,7 +57,16 @@ module.exports = function (app) {
       //json res format: [{"_id": bookid, "title": book_title, "commentcount": num_of_comments },...]
       let docs = await getBook({}, (err, docs) => {
         if (err) return console.log(err)
-        res.json(docs)
+        let books = []
+        for (let i in docs) {
+          books.push({
+            _id: docs[i]._id,
+            title: docs[i].title,
+            comments: docs[i].comments,
+            commentcount: docs[i].comments.length,
+          })
+        }
+        res.json(books)
       })
     })
 
