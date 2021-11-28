@@ -1,10 +1,10 @@
 {
-	"name": "fcc-library",
-	"version": "1.0.0",
-	"description": "boilerplate",
-	"main": "server.js",
+	"name": "personal-library",
+	"version": "0.1.0",
+	"description": "a personal library project for freeCodeCamp",
+	"main": "app.js",
 	"scripts": {
-		"start": "node server.js"
+		"start": "node app.js"
 	},
 	"dependencies": {
 		"body-parser": "^1.15.2",
@@ -18,7 +18,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/freeCodeCamp/boilerplate-project-library"
+		"url": "https://github.com/ElliotFriend/personal-library.git"
 	},
 	"keywords": [
 		"node",
