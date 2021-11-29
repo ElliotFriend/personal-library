@@ -116,6 +116,7 @@ module.exports = function (app) {
     })
 
     .post(async (req, res) => {
+      if (!req.body.comment) return res.json('missing required field comment')
       let bookid = req.params.id;
       let comment = req.body.comment;
       //json res format same as .get
@@ -123,7 +124,7 @@ module.exports = function (app) {
         bookid: bookid,
         comment: comment
       }, (err, doc) => {
-        if (err) return console.log(err)
+        if (err || doc.length === 0) return res.json('no book exists')
         res.json({
           _id: doc._id,
           title: doc.title,
