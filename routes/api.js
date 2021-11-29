@@ -142,8 +142,8 @@ module.exports = function (app) {
       //if successful response will be 'delete successful'
       let doc = await deleteBook({
         _id: bookid
-      }, (err, docs) => {
-        if (err) return console.log(err)
+      }, (err, doc) => {
+        if (err || doc.deletedCount === 0) return res.json('no book exists')
         res.json('delete successful')
       })
     });
