@@ -119,9 +119,9 @@ module.exports = function (app) {
       if (!req.body.comment) return res.json('missing required field comment')
       let bookid = req.params.id;
       let comment = req.body.comment;
-      let book = await getBook({ _id: bookid }), (err, doc) => {
+      let book = await getBook({ _id: bookid }, (err, doc) => {
         if (err || doc.length === 0) return res.json('no book exists')
-      }
+      })
       //json res format same as .get
       let doc = await addBookComment({
         bookid: bookid,
